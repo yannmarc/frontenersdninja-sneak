@@ -45,7 +45,7 @@ Then crop/optimize/edit your image however you like, add it to your project, and
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://github.com/yannmarc/frontenersdninja-sneak](https://github.com/yannmarc/frontenersdninja-sneak)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -96,5 +96,5 @@ For focus projects I will like to focus on the cart issues, yet I found a way to
 
 ## Author
 
-- Frontend Mentor - [@yanmmarc](https://www.frontendmentor.io/profile/yourusername)
+- Frontend Mentor - [@yanmmarc](https://www.frontendmentor.io/profile/yannmarc)
 - Twitter - [@ninja_frontend](https://www.twitter.com/ninja_frontend)
