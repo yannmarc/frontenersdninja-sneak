@@ -13,13 +13,21 @@ import productImg4 from '../assets/imgs/jpgs/image-product-4.jpg';
 import iconMinus from '../assets/imgs/svgs/icon-minus.svg';
 import iconPlus from '../assets/imgs/svgs/icon-plus.svg';
 
+import Navbar from './navbar/Navbar';
 
 
 const Shopping = () => {
 
     const [imageIndex, setImageIndex] = useState(0);
     const [counter, setCounter] = useState(0);
+    const [cart, setCart] = useState([]);
     const [isDisabled, setDisable] = useState(false);
+    const prods = [...Array(1)].map(() => ({
+        prodName: "Fall Limited Edition Sneakers",
+        prodImage: productImg1,
+        price: 125,
+        prodQty: counter
+    }));
 
     const thumbnails = [
         {
@@ -83,29 +91,23 @@ const Shopping = () => {
         return result;
     }
 
-    const cartItems = [];
-
     const AddToCart = () => {
         if(counter === 0) {
             return;
         }
-
-        cartItems.push({
-            src: productImg1,
-            productName: "Fall Limited Edition Sneakers",
-            total: ComputerPrice(),
-            quantity: counter,
-            unitPrice: 125.00
-        })
-        return cartItems;
+        setCart(prods);
+        console.log(cart)
+        if (cart.length >= 0) {;
+            cart.length = 0;
+            prods[0].prodQty = counter;
+            prods[0]["total"] = ComputerPrice();
+        }
     }
-
-    console.log(ComputerPrice())
-    console.log(cartItems) 
 
 
   return (
     <Fragment>
+        <Navbar cart={cart} counter={counter} setCart={setCart} setCounter={setCounter}/>
         <div className="md:max-w-xl md:mx-auto md:px-6 md:flex md:flex-col md:gap-2 lg:px-6 lg:max-w-[1024px] mx-auto xl:px-0 md:py-[90px] lg:py-[90px] flex flex-col justify-center lg:flex-row  lg:gap-20 lg:items-center">
             <div className="">
                 <div className="md:rounded-[14px] lg:rounded-[14px] overflow-hidden w-full lg:w-[445px] h-full md:h-[445px] lg:h-[445px]"><img className="object-cover w-full" src={handleImageSwap(imageIndex).src} alt={handleImageSwap(imageIndex).alt} /></div>
