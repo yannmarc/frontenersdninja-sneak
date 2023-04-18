@@ -1,12 +1,12 @@
 import React, { Fragment, useState } from "react";
 import logo from "../../assets/imgs/svgs/logo.svg";
-import cart from "../../assets/imgs/svgs/icon-cart.svg";
+import Imgcart from "../../assets/imgs/svgs/icon-cart.svg";
 import avatar from "../../assets/imgs/jpgs/image-avatar.png";
 import menuOpen from "../../assets/imgs/svgs/icon-menu.svg";
 import menuClose from "../../assets/imgs/svgs/icon-close.svg";
 import CartDropdown from "../ui/CartDropdown";
 
-const Navbar = () => {
+const Navbar = ({ cart, counter, setCart, setCounter }) => {
   const links = ["Collections", "Men", "Woment", "About", "Contact"];
   const [isOpen, setOpen] = useState(false);
   const [isActive, setActive] = useState(false);
@@ -41,14 +41,15 @@ const Navbar = () => {
               </ul>
             </div>
             <div className="flex gap-2 md:justify-end lg:gap-12 items-center relative md:right-[initial] -z-10 lg:z-0 lg:right-[initial]">
-              <div className="">
+              <div className="relative">
                 <img
-                  className="cursor-pointer w-[20px] lg:w-[initial]"
-                  src={cart}
+                  className="cursor-pointer w-[20px] lg:w-[initial] relative"
+                  src={Imgcart}
                   alt="icon cart"
-                  onMouseOver={() => setOpen((prevState) => !prevState)}
+                  onClick={() => setOpen((prevState) => !prevState)}
                 />
-                {isOpen && <CartDropdown />}
+                {isOpen && <CartDropdown cart={cart} setCart={setCart} setCounter={setCounter}/>}
+                <span className={counter <= 0 ? "hidden" : "absolute -top-[9.5px] -right-4 bg-orange-400 py-[0.1px] text-sm px-3 rounded-xl text-white"}>{counter}</span>
               </div>
               <div className="">
                 <span className="w-[35px] lg:w-[50px] block overflow-hidden rounded-full border-2 border-transparent hover:border-2 hover:border-orange-400 transition-all">
