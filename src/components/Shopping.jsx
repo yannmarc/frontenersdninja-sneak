@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import thumbnail1 from '../assets/imgs/jpgs/image-product-1-thumbnail.jpg';
 import thumbnail2 from '../assets/imgs/jpgs/image-product-2-thumbnail.jpg';
@@ -14,6 +14,7 @@ import iconMinus from '../assets/imgs/svgs/icon-minus.svg';
 import iconPlus from '../assets/imgs/svgs/icon-plus.svg';
 
 import Navbar from './navbar/Navbar';
+import Alert from './ui/Alert';
 
 
 const Shopping = () => {
@@ -22,6 +23,9 @@ const Shopping = () => {
     const [counter, setCounter] = useState(0);
     const [cart, setCart] = useState([]);
     const [isDisabled, setDisable] = useState(false);
+    const [isStored, setStored] = useState(false);
+
+    // populating the prod array.
     const prods = [...Array(1)].map(() => ({
         prodName: "Fall Limited Edition Sneakers",
         prodImage: productImg1,
@@ -85,24 +89,50 @@ const Shopping = () => {
         setCounter((prevState) => prevState - 1);
     }
 
+    const AddToCart = () => {
+        if(counter === 0) {
+            return;
+        }
+        setCart(prods);
+        setStored(true)
+        setLocalStorageItems('items')
+        getLocalStorageItems('items')
+
+        if (cart.length >= 0) {
+            cart.length = 0;
+            prods[0].prodQty = counter;
+            prods[0]["total"] = ComputerPrice();
+        }
+    }
+
     const ComputerPrice = () => {
         const price = 125.00;
         let result = price * counter;
         return result;
     }
 
-    const AddToCart = () => {
-        if(counter === 0) {
-            return;
-        }
-        setCart(prods);
-        console.log(cart)
-        if (cart.length >= 0) {;
-            cart.length = 0;
-            prods[0].prodQty = counter;
-            prods[0]["total"] = ComputerPrice();
+    const setLocalStorageItems = (key) =>{
+        if(isStored) {
+            localStorage.setItem(key, JSON.stringify(cart));
         }
     }
+
+    const getLocalStorageItems = (key) => {
+        let result;
+        result = JSON.parse(localStorage.getItem(key))
+    }
+
+    useEffect(() => {
+        const emptyLocalStorge = () => {
+            localStorage.clear();
+            setStored(false);
+        }
+
+        window.addEventListener("load", emptyLocalStorge);
+        return(
+            window.removeEventListener("load", emptyLocalStorge)
+        )
+    }, [isStored, cart])
 
 
   return (
@@ -146,6 +176,8 @@ const Shopping = () => {
                 </div>
             </div>
         </div>
+
+        <Alert isStored={isStored} setStore={setStored}/>
     </Fragment>
   )
 }
