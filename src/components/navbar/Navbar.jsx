@@ -20,8 +20,8 @@ const Navbar = ({ cart, counter, setCart, setCounter }) => {
         <div className="px-6 py-3 lg:py-0 lg:px-6 lg:max-w-5xl xl:max-w-6xl lg:mx-auto flex items-center justify-between border-b-2 border-gray-200">
           <div className="flex items-center gap-2 lg:inline">
             <span className="block lg:hidden cursor-pointer w-[50px]" onClick={handleActive}><img src={menuOpen} alt="icon menu" /></span>
-            <a href="#logo" >
-              <img className="w-[300px] lg:w-[initial]" src={logo} alt="sneakers logo" />
+            <a href="#logo" className="">
+              <img className="w-[300px] lg:w-[initial] hover:scale-105 transition-all" src={logo} alt="sneakers logo" />
             </a>
           </div>
           <div className="flex justify-end lg:justify-between md:justify-end w-full ml-14 items-center">
@@ -48,7 +48,7 @@ const Navbar = ({ cart, counter, setCart, setCounter }) => {
                   alt="icon cart"
                   onClick={() => setOpen((prevState) => !prevState)}
                 />
-                {isOpen && <CartDropdown cart={cart} setCart={setCart} setCounter={setCounter}/>}
+                {isOpen && <CartDropdown cart={cart} setCart={setCart} setCounter={setCounter} setOpen={setOpen}/>}
                 <span className={counter <= 0 ? "hidden" : "absolute -top-[9.5px] -right-4 bg-orange-400 py-[0.1px] text-sm px-3 rounded-xl text-white"}>{counter}</span>
               </div>
               <div className="">
