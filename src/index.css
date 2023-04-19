@@ -16,3 +16,30 @@
   box-shadow: 15px 23px 20px #FFEDE0;
 }
 
+.animated-modal {
+  animation: slide-right .5s ease-in-out;
+}
+
+.animated-modal-out {
+  animation: slide-out .5s ease-in-out;
+  animation-delay: 2s;
+}
+
+@keyframes slide-right {
+  0% {
+    right: -100vw;
+  }
+  100% {
+    right: 80px;
+  }
+}
+
+@keyframes slide-out {
+  0% {
+    right: 80px;
+  }
+  100%{
+    right: -100vw;
+  }
+}
+
