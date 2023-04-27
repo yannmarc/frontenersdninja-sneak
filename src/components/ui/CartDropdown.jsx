@@ -25,7 +25,7 @@ const CartDropdown = ({cart, setCart, setCounter, setOpen}) => {
   
   return (
     <Fragment>
-        <div className="absolute cart-box right-[-140px] top-[69px] w-[358px] bg-white shadow-xl rounded-lg">
+        <div className="absolute md:left-[-200px] z-50 md:top-[50px]  lg:absolute cart-box lg:right-[-100px] xl:right-[-140px] lg:top-[69px] w-[250px] lg:w-[358px] bg-white shadow-xl rounded-lg">
             <div className="py-5 border-b-2 px-6"><h3 className="font-bold text-md">Cart</h3></div>
             <div className={isEmpty ? "h-[180px] py-8 relative px-6 flex items-center justify-center" : "h-auto py-8 relative px-5"}>
               
