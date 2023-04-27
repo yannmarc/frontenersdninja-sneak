@@ -49,7 +49,7 @@ const Navbar = ({ cart, counter, setCart, setCounter }) => {
                   onClick={() => setOpen((prevState) => !prevState)}
                 />
                 {isOpen && <CartDropdown cart={cart} setCart={setCart} setCounter={setCounter} setOpen={setOpen}/>}
-                <span className={counter <= 0 ? "hidden" : "absolute -top-[9.5px] -right-4 bg-orange-400 py-[0.1px] text-sm px-3 rounded-xl text-white"}>{counter}</span>
+                <span className={counter <= 0 ? "hidden" : "absolute -top-[5px] -right-2 bg-orange-400 py-[0.9px] text-[8px] lg:text-sm lg:-top-[9.5px] lg:right-[-17px] px-2 lg:px-3 rounded-xl text-white"}>{counter}</span>
               </div>
               <div className="">
                 <span className="w-[35px] lg:w-[50px] block overflow-hidden rounded-full border-2 border-transparent hover:border-2 hover:border-orange-400 transition-all">
